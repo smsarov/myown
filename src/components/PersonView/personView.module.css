@@ -1,0 +1,122 @@
+.container {
+  min-height: 100vh;
+  width: 90%;
+  padding: 1rem 0 0 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.person_data {
+  box-sizing: border-box;
+  width: 90%;
+  padding: 1rem 2rem;
+  border-radius: 2rem 0 0 2rem;
+  border-right: 0;
+  padding-right: 0;
+  box-shadow: -4px 4px 24px 8px rgba(128, 128, 128, 0.5);
+
+  display: grid;
+  grid-template-columns: auto 5fr auto;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1rem;
+  font-weight: 900;
+  padding: 0;
+  box-sizing: border-box;
+  height: fit-content;
+}
+
+.person_data_stats {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid grey;
+  box-sizing: border-box;
+  width: 14rem;
+}
+
+.person_data_stats > * > * {
+  font-weight: 600;
+}
+
+.person_data_stats > ul {
+  align-items: flex-start;
+}
+
+
+.content {
+  width: 100%;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+}
+
+.main {
+  width: 90%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.note_input {
+  width: 45rem;
+  max-width: 45rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  height: 200px;
+  outline: none;
+  border: none;
+  resize: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+.note_header {
+  flex-grow: 1;
+  font-size: 3rem;
+  font-family: inherit;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  resize: none;
+  padding: 0;
+  transform: translateY(-1rem);
+}
+
+.save_button {
+  height: fit-content;
+  margin: 0 auto;
+  padding: 0;
+  width:max-content;
+}
+
+.notes_view {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.selected {
+  fill: black;
+}
+
+.star {
+  width: 100%;
+}
+
