@@ -39,7 +39,7 @@ function Sidebar() {
           добавить
         </Button>
         {persons.map((person) => (
-          <SidebarPerson person={person}></SidebarPerson>
+          <SidebarPerson person={person} key={person.id}></SidebarPerson>
         ))}
       </Menu>
       {isModalOpen &&

@@ -49,6 +49,7 @@ function RatingPicker({ initialRating = 1, readonly = false }) {
 
         return (
           <Star
+            key={index}
             className={[styles.star, chosenStyle].join(" ")}
             onClick={() => handleClick(index)}
             onMouseEnter={() => handleEnter(index)}

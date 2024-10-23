@@ -17,7 +17,7 @@ function ViewNotes() {
   return (
     <div className={styles.notes_view}>
       {notes.toReversed().map((note, index) => (
-        <div>
+        <div key={`note:${person?.id}:${index}`}>
           {index > 0 && (
             <hr style={{ borderColor: "grey", marginBottom: "2rem" }}></hr>
           )}
