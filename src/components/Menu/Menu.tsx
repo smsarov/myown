@@ -7,8 +7,6 @@ interface MenuProps {
 }
 
 function Menu({children, className} : MenuProps) {
-  const [selected, setSelected] = useState(1);
-
   return (
     <ul className={[styles.sidebar, className].join(' ')}>
       {children}
