@@ -34,7 +34,7 @@ function RatingPicker({ initialRating = 1, readonly = false }) {
         alignItems: "flex-start",
       }}
     >
-      <input type="number" hidden value={savedRating} name="score" />
+      <input type="number" hidden value={savedRating} name="score" readOnly/>
       {[1, 2, 3, 4, 5].map((index) => {
         let isFilled = false;
         if (readonly) {
