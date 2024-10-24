@@ -7,21 +7,27 @@ function RatingPicker({ initialRating = 1, readonly = false }) {
   const [savedRating, setSavedRating] = useState(initialRating);
   const [isHovering, setIsHovering] = useState(false);
 
-  const handleClick = (index: number) => {
+  function handleReadonly<T>(fn: (fn: T) => void) {
     if (readonly) return;
-    setSavedRating(index);
+    return fn;
+  }
+
+  const handleClick = (index: number) => {
+    return handleReadonly(() => setSavedRating(index));
   };
 
   const handleEnter = (index: number) => {
-    if (readonly) return;
-    setRating(index);
-    setIsHovering(true);
+    return handleReadonly(() => {
+      setRating(index);
+      setIsHovering(true);
+    });
   };
 
   const handleLeave = () => {
-    if (readonly) return;
-    setRating(0);
-    setIsHovering(false);
+    return handleReadonly(() => {
+      setRating(0);
+      setIsHovering(false);
+    });
   };
 
   return (
@@ -34,7 +40,7 @@ function RatingPicker({ initialRating = 1, readonly = false }) {
         alignItems: "flex-start",
       }}
     >
-      <input type="number" hidden value={savedRating} name="score" readOnly/>
+      <input type="number" hidden value={savedRating} name="score" readOnly />
       {[1, 2, 3, 4, 5].map((index) => {
         let isFilled = false;
         if (readonly) {
@@ -51,9 +57,9 @@ function RatingPicker({ initialRating = 1, readonly = false }) {
           <Star
             key={index}
             className={[styles.star, chosenStyle].join(" ")}
-            onClick={() => handleClick(index)}
-            onMouseEnter={() => handleEnter(index)}
-            onMouseLeave={handleLeave}
+            onClick={handleClick(index)}
+            onMouseEnter={handleEnter(index)}
+            onMouseLeave={handleLeave()}
           ></Star>
         );
       })}
