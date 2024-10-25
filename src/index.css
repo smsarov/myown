@@ -1,12 +1,18 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --main-bg-color: rgb(255, 239, 215);
+  --main-bg-color: rgb(254, 230, 190);
   --main-shadow-color: -4px 4px 24px 8px rgba(128, 128, 128, 0.5);
+  --main-color: rgb(40, 40, 40);
 }
 
 body {
   margin: 0;
   background: var(--main-bg-color);
+  color: var(--main-color);
+}
+
+button {
+  color: inherit;
 }
 
 .app {

@@ -99,7 +99,7 @@ textarea::placeholder {
 }
 
 .selected {
-  fill: black;
+  fill: var(--main-color);
 }
 
 .star {
