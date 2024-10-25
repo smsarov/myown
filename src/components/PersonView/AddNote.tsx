@@ -1,19 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Button from "../ui/Button";
 import styles from "./personView.module.css";
 import useCreateNote from "../../hooks/person/useCreateNote";
 import RatingPicker from "./RatingPicker";
 import Menu from "../Menu/Menu";
 import { PersonType } from "../../types/PersonType";
-import { Badges, BadgeInput } from "./Badges";
+import { BadgeInput } from "./Badges";
 
 const initialRating = 1;
-const maxBadges = 3;
 
 function AddNote({ person }: { person: PersonType }) {
-  const [rating, setRating] = useState(initialRating);
-  const [badges, setBadges] = useState<string[]>([]);
-
   const createNote = useCreateNote();
 
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -66,7 +62,6 @@ function AddNote({ person }: { person: PersonType }) {
           onChange={handleChangeContent}
           placeholder="Tекст"
         ></textarea>
-        <input type="number" name="rating" hidden readOnly value={rating} />
       </div>
       <Menu className={styles.add_note_menu}>
         <RatingPicker initialRating={initialRating}></RatingPicker>

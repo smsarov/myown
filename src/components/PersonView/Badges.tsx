@@ -6,7 +6,7 @@ type BadgesProps = {
   onChange?: (badges: string[]) => void;
 };
 
-function Badges({ children, onChange }: BadgesProps) {
+function Badges({ children }: BadgesProps) {
   return (
     <>
       <form className={styles.badges}>{children}</form>
