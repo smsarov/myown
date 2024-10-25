@@ -1,14 +1,13 @@
-import { usePersonSelected } from "../../contexts/PersonContext";
 import styles from "./personView.module.css";
 import RatingPicker from "./RatingPicker";
+import { PersonType } from '../../types/PersonType';
 
-function ViewNotes() {
-  const person = usePersonSelected();
-  const notes = person!.notes;
+function ViewNotes({person} : {person: PersonType}) {
+  const notes = person.notes;
 
   if (!notes || !notes.length) {
     return (
-      <p className={styles.note_header} style={{ color: "grey", margin: 0 }}>
+      <p className={styles.title} style={{color: "grey"}}>
         Пока записок нет :(
       </p>
     );

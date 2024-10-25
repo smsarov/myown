@@ -26,7 +26,7 @@ function PersonView() {
   return (
     <div className={styles.container}>
       <Header person={person}></Header>
-      {mode === "view" ? <ViewNotes></ViewNotes> : <AddNote></AddNote>}
+      {mode === "view" ? <ViewNotes person={person}></ViewNotes> : <AddNote></AddNote>}
 
       <div className={styles.sidebar}>
         <Menu>
