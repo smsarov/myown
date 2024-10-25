@@ -11,7 +11,7 @@
 }
 
 .container {
-  box-shadow: var(--main-shadow-color);
+  box-shadow: -4px 4px 24px 8px var(--main-shadow-color);
   background: var(--main-bg-color);
   border-radius: 1rem;
   padding: 2rem;
