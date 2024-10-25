@@ -1,6 +1,5 @@
 .container {
   flex-grow: 1;
-  padding: 1rem 0;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(auto, 40rem) auto 14rem;

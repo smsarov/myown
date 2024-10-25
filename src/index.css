@@ -6,3 +6,14 @@ body {
   margin: 0;
   background: rgb(255, 239, 215);
 }
+
+.app {
+  display: flex;
+  flex-direction: row;
+  min-height: "100dvh";
+  box-sizing: "border-box";
+}
+
+.app > * {
+  padding-top: 1rem;
+}

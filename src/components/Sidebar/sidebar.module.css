@@ -56,7 +56,6 @@
   position: sticky;
   top: 0;
   border-right: 1px solid gray;
-  padding: 1rem 0;
   overflow-y: "scroll";
   box-sizing: border-box;
   min-width: fit-content;

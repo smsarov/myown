@@ -5,14 +5,7 @@ import { PersonContextProvider } from "./contexts/PersonContext";
 function App() {
   return (
     <PersonContextProvider>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          minHeight: '100dvh',
-          boxSizing: 'border-box'
-        }}
-      >
+      <div className="app">
         <Sidebar></Sidebar>
         <PersonView></PersonView>
       </div>
