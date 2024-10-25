@@ -25,10 +25,9 @@ function Sidebar() {
         position: "sticky",
         top: 0,
         borderRight: "1px solid gray",
-        overflow: "scroll",
-        minWidth: "fit-content",
         padding: "1rem 0",
-        boxSizing: "border-box",
+        overflowY: "scroll",
+        boxSizing: "border-box"
       }}
     >
       <Menu>

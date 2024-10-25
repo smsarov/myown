@@ -1,54 +1,36 @@
 .container {
-  min-height: 100vh;
-  width: 90%;
-  padding: 1rem 0 0 0;
+  flex-grow: 1;
+  padding: 1rem 0;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2rem;
-}
-
-.header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: minmax(auto, 40rem) auto 14rem;
+  grid-template-rows: max-content auto;
+  row-gap: 1rem;
+  padding-left: 2rem;
 }
 
 .person_data {
-  box-sizing: border-box;
-  width: 90%;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+
   padding: 1rem 2rem;
   border-radius: 2rem 0 0 2rem;
   border-right: 0;
   padding-right: 0;
   box-shadow: -4px 4px 24px 8px rgba(128, 128, 128, 0.5);
-
-  display: grid;
-  grid-template-columns: auto 5fr auto;
 }
 
 h1 {
   font-size: 4rem;
-  line-height: 1rem;
+  margin: 0;
   font-weight: 900;
-  padding: 0;
-  box-sizing: border-box;
-  height: fit-content;
 }
 
 .person_data_stats {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  place-items: center left;
   border-left: 1px solid grey;
-  box-sizing: border-box;
-  width: 14rem;
-}
-
-.person_data_stats > * > * {
   font-weight: 600;
 }
 
@@ -56,60 +38,59 @@ h1 {
   align-items: flex-start;
 }
 
+.note {
+  grid-column: 1;
 
-.content {
-  width: 100%;
-  padding-left: 2rem;
-  padding-bottom: 2rem;
-}
-
-.main {
-  width: 90%;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: row;
-  gap: 2rem;
-  justify-content: space-between;
-}
-
-.note_input {
-  width: 45rem;
-  max-width: 45rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  height: 200px;
-  outline: none;
-  border: none;
-  resize: none;
-  background: transparent;
-  font-family: inherit;
-}
-
-.note_header {
-  flex-grow: 1;
-  font-size: 3rem;
-  font-family: inherit;
-  background: transparent;
-  outline: none;
-  border: none;
-  font-weight: bold;
-  resize: none;
-  padding: 0;
-  transform: translateY(-1rem);
-}
-
-.save_button {
-  height: fit-content;
-  margin: 0 auto;
-  padding: 0;
-  width:max-content;
-}
-
-.notes_view {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  position: relative;
+  gap: 1rem;
+  padding-left: 2rem;
+  border-bottom: 2px solid black;
+}
+
+.note:last-of-type{
+  border-bottom: none;
+}
+
+.note_footer {
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0.5rem 0;
+}
+
+
+textarea {
+  background: transparent;
+  outline: none;
+  resize: none;
+  border: none;
+  font-family: inherit;
+}
+
+textarea::placeholder {
+  color: grey;
+  opacity: 1;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.content {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.sidebar {
+  grid-column: 3;
+  position: sticky;
+  top: 1rem;
+  height: fit-content;
+  border-left: 1px solid grey;
 }
 
 .selected {
@@ -120,3 +101,7 @@ h1 {
   width: 100%;
 }
 
+.add_note_menu {
+  width: fit-content;
+  justify-self: flex-end;
+}

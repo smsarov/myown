@@ -1,17 +1,30 @@
-import styles from './button.module.css'
+import styles from "./button.module.css";
+import React from "react";
 
-interface ButtonProps {
+type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-  selected?: boolean
-}
+  selected?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-function Button({children, onClick, className, selected} : ButtonProps) {
+function Button({
+  children,
+  onClick,
+  className,
+  selected,
+  ...attrs
+}: ButtonProps) {
   const selectedStyle = selected ? styles.selected : "";
   return (
-    <button className={[styles.button, selectedStyle, className].join(' ')} onClick={onClick}>{children}</button>
-  )
+    <button
+      {...attrs}
+      className={[styles.button, selectedStyle, className].join(" ")}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
 }
 
-export default Button
+export default Button;

@@ -9,11 +9,11 @@ function App() {
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          minHeight: '100dvh',
+          boxSizing: 'border-box'
         }}
       >
         <Sidebar></Sidebar>
-
         <PersonView></PersonView>
       </div>
     </PersonContextProvider>

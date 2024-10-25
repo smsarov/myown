@@ -30,21 +30,18 @@ function Header() {
   );
 
   return (
-    <div className={styles.header}>
-      <div className={styles.person_data}>
-        <div className={styles.person_name}>
-          <h1>{person.name}</h1>
-          <h1>{person.surname || <span style={{ opacity: 0 }}>.</span>}</h1>
-        </div>
-        <div></div>
-        <div className={styles.person_data_stats}>
-          <Menu>
-            <li>{declineWord(notes.length, "заметка")}</li>
-            <li>{declineWord(marks.good, "хороший")}</li>
-            <li>{declineWord(marks.neutral, "нейтральный")}</li>
-            <li>{declineWord(marks.bad, "плохой")}</li>
-          </Menu>
-        </div>
+    <div className={styles.person_data}>
+      <h1>
+        {person.name}<br />{person.surname || <br />}
+      </h1>
+      <div></div>
+      <div className={styles.person_data_stats}>
+        <Menu>
+          <li>{declineWord(notes.length, "заметка")}</li>
+          <li>{declineWord(marks.good, "хороший")}</li>
+          <li>{declineWord(marks.neutral, "нейтральный")}</li>
+          <li>{declineWord(marks.bad, "плохой")}</li>
+        </Menu>
       </div>
     </div>
   );

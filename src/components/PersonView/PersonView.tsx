@@ -18,7 +18,7 @@ function PersonView() {
 
   if (!person)
     return (
-      <div style={{flexGrow: 1, display: "grid", placeItems: 'center'}}>
+      <div style={{ flexGrow: 1, display: "grid", placeItems: "center" }}>
         <img src={monkey} width={200} height={200}></img>
       </div>
     );
@@ -26,33 +26,18 @@ function PersonView() {
   return (
     <div className={styles.container}>
       <Header></Header>
-      <div className={styles.main}>
-        <div className={styles.content}>
-          {mode === "view" ? <ViewNotes></ViewNotes> : <AddNote></AddNote>}
-        </div>
+      {mode === "view" ? <ViewNotes></ViewNotes> : <AddNote></AddNote>}
 
-        <div
-          style={{
-            position: "sticky",
-            top: "1rem",
-            borderLeft: "1px solid grey",
-            height: "fit-content",
-            minWidth: "fit-content",
-          }}
-        >
-          <Menu>
-            <Button onClick={() => changeSelectedPerson()}>закрыть</Button>
-            <Button onClick={() => setMode("view")} selected={mode === "view"}>
-              посмотреть
-            </Button>
-            <Button
-              onClick={() => setMode("write")}
-              selected={mode === "write"}
-            >
-              написать
-            </Button>
-          </Menu>
-        </div>
+      <div className={styles.sidebar}>
+        <Menu>
+          <Button onClick={() => changeSelectedPerson()}>закрыть</Button>
+          <Button onClick={() => setMode("view")} selected={mode === "view"}>
+            посмотреть
+          </Button>
+          <Button onClick={() => setMode("write")} selected={mode === "write"}>
+            написать
+          </Button>
+        </Menu>
       </div>
     </div>
   );

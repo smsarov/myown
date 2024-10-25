@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../ui/Button";
 import styles from "./personView.module.css";
 import useCreateNote from "../../hooks/person/useCreateNote";
@@ -6,11 +6,16 @@ import { usePersonSelected } from "../../contexts/PersonContext";
 import RatingPicker from "./RatingPicker";
 import Menu from "../Menu/Menu";
 
+const initialRating = 1;
+
 function AddNote() {
   const selectedPerson = usePersonSelected();
   const createNote = useCreateNote();
+
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const titleRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const [rating, setRating] = useState(initialRating);
 
   const handleChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const target = e.target;
@@ -29,56 +34,49 @@ function AddNote() {
     const formData = new FormData(e.currentTarget);
     const title = formData.get("title")!.toString().trim();
     const content = formData.get("content")!.toString().trim();
-    const score = formData.get("score")!.toString().trim();
+    const score = formData.get("rating")!.toString().trim();
+
+    console.log(title, content, score);
     createNote(selectedPerson!.id, { title, content, score });
     textAreaRef.current!.value = "";
     titleRef.current!.value = "";
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        width: "100%",
-        flexDirection: "column",
-        gap: "1rem",
-        alignItems: "flex-start",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-          gap: "1rem",
-        }}
-      >
+    <>
+      <form id="note-input-form" onSubmit={handleSubmit} className={styles.note}>
         <textarea
           ref={titleRef}
+          className={styles.title}
           name="title"
           maxLength={40}
-          className={styles.note_header}
           placeholder="Заголовок"
           onKeyUp={handleInputPress}
         ></textarea>
-        <Menu>
-          <RatingPicker></RatingPicker>
-          <Button className={styles.save_button}>Сохранить</Button>
-        </Menu>
-      </div>
-
-      <textarea
-        ref={textAreaRef}
-        required
-        name="content"
-        onChange={handleChangeContent}
-        className={styles.note_input}
-        placeholder="Tекст"
-      ></textarea>
-    </form>
+        <textarea
+          ref={textAreaRef}
+          className={styles.content}
+          required
+          name="content"
+          onChange={handleChangeContent}
+          placeholder="Tекст"
+        ></textarea>
+        <input type="number" name="rating" hidden readOnly value={rating} />
+      </form>
+      <Menu className={styles.add_note_menu}>
+        <RatingPicker
+          onChange={setRating}
+          initialRating={initialRating}
+        ></RatingPicker>
+        <Button
+          className={styles.save_button}
+          type="submit"
+          form="note-input-form"
+        >
+          Сохранить
+        </Button>
+      </Menu>
+    </>
   );
 }
 
