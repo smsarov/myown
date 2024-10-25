@@ -6,9 +6,9 @@ import createPerson from "../hooks/person/createPerson";
 type PersonsContextType = {
   persons: PersonType[];
   selected: string | undefined;
-  setSelected: (id?: string) => any;
+  setSelected: (id?: string) => void;
   addPerson: (data: PersonProps) => PersonType;
-  deletePerson: (id: string) => any;
+  deletePerson: (id: string) => void;
   updatePerson: (id: string, person: PersonType) => PersonType;
 };
 
