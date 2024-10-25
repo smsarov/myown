@@ -9,4 +9,5 @@ export type Note = {
   title?: string;
   content: string;
   score: string;
+  badges: string[] | undefined;
 }
