@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import Menu from "../Menu/Menu";
 import Button from "../ui/Button";
 import AddUserModal from "./AddUserModal";
+import Modal from "../ui/Modal";
 
 import {
   usePersonAll,
@@ -14,22 +15,11 @@ import { PersonType } from "../../types/PersonType";
 import styles from "./sidebar.module.css";
 
 function Sidebar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const persons = usePersonAll();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
-    <div
-      style={{
-        height: "100dvh",
-        position: "sticky",
-        top: 0,
-        borderRight: "1px solid gray",
-        padding: "1rem 0",
-        overflowY: "scroll",
-        boxSizing: "border-box"
-      }}
-    >
+    <div className={styles.sidebar}>
       <Menu>
         <Button
           onClick={() => setIsModalOpen(true)}
@@ -43,7 +33,9 @@ function Sidebar() {
       </Menu>
       {isModalOpen &&
         createPortal(
-          <AddUserModal close={() => setIsModalOpen(false)}></AddUserModal>,
+          <Modal>
+            <AddUserModal close={() => setIsModalOpen(false)}></AddUserModal>
+          </Modal>,
           document.body
         )}
     </div>

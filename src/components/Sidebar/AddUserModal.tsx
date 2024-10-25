@@ -1,5 +1,4 @@
 import React from "react";
-import Modal from "../Modal";
 import { usePersonAddition } from "../../contexts/PersonContext";
 import styles from "./sidebar.module.css";
 import { Check, X } from "lucide-react";
@@ -17,39 +16,35 @@ function AddUserModal({ close }: { close: () => void }) {
   };
 
   return (
-    <Modal>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.header}>
-          <span style={{ fontWeight: "bold", fontSize: "1.4rem" }}>
-            Добавить
-          </span>
-          <nav className={styles.buttons}>
-            <button className={styles.button}>
-              <Check style={{ color: "green" }} />
-            </button>
-            <button onClick={close} className={styles.button}>
-              <X style={{ color: "red" }} />
-            </button>
-          </nav>
-        </div>
-        <input
-          type="text"
-          name="name"
-          placeholder="Имя"
-          minLength={1}
-          className={styles.input}
-          required
-          autoFocus
-        />
-        <input
-          type="text"
-          minLength={1}
-          name="surname"
-          placeholder="Фамилия"
-          className={styles.input}
-        />
-      </form>
-    </Modal>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.header}>
+        <span>Добавить</span>
+        <nav className={styles.buttons}>
+          <button type="submit">
+            <Check style={{ color: "green" }} />
+          </button>
+          <button onClick={close}>
+            <X style={{ color: "red" }} />
+          </button>
+        </nav>
+      </div>
+      <input
+        type="text"
+        name="name"
+        placeholder="Имя"
+        minLength={1}
+        className={styles.input}
+        required
+        autoFocus
+      />
+      <input
+        type="text"
+        minLength={1}
+        name="surname"
+        placeholder="Фамилия"
+        className={styles.input}
+      />
+    </form>
   );
 }
 
